@@ -61,13 +61,6 @@ function fluxxorWrapper(WrappedComponent, flux, fluxxorStores, fluxxorProps) {
         return flux;
       }
     }, {
-      key: "getChildContext",
-      value: function getChildContext() {
-        return {
-          flux: this.getFlux()
-        };
-      }
-    }, {
       key: "render",
       value: function render() {
         var _this4 = this;
@@ -89,9 +82,5 @@ function fluxxorWrapper(WrappedComponent, flux, fluxxorStores, fluxxorProps) {
     return fluxxorController;
   }(React.Component);
 }
-
-fluxxorWrapper.childContextTypes = {
-  flux: React.PropTypes.object
-};
 
 module.exports = fluxxorWrapper;

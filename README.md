@@ -46,7 +46,7 @@ const stores = {
 
 const actions = {
   actionA() {
-        this.dispatch('WHATEVER', { key: value })
+    this.dispatch('WHATEVER', { key: value })
   },
 };
 
