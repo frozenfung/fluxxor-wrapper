@@ -7,7 +7,9 @@ function fluxxorWrapper(WrappedComponent, flux, fluxxorStores, fluxxorProps) {
 
       this.setStateFromFlux = this.setStateFromFlux.bind(this);
 
-      this.state = {};
+      this.state = {
+        fluxProps: {},
+      };
     }
 
     componentDidMount() {
