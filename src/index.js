@@ -6,6 +6,9 @@ function fluxxorWrapper(WrappedComponent, flux, fluxxorStores, fluxxorProps) {
       super(props);
 
       this.setStateFromFlux = this.setStateFromFlux.bind(this);
+      this.getStateFromFlux = this.getStateFromFlux.bind(this);
+      this.getFlux = this.getFlux.bind(this);
+      this.fluxIns = flux(props.fluxInitObj && JSON.parse(props.fluxInitObj));
 
       this.state = {
         fluxProps: this.getStateFromFlux(),
@@ -14,7 +17,7 @@ function fluxxorWrapper(WrappedComponent, flux, fluxxorStores, fluxxorProps) {
 
     componentDidMount() {
       fluxxorStores.forEach((store) => {
-        flux.store(store).on(
+        this.fluxIns.store(store).on(
           "change",
           this.setStateFromFlux
         )
@@ -23,7 +26,7 @@ function fluxxorWrapper(WrappedComponent, flux, fluxxorStores, fluxxorProps) {
 
     componentWillUnmount() {
       fluxxorStores.forEach((store) => {
-        flux.store(store).removeListener(
+        this.fluxIns.store(store).removeListener(
           "change",
           this.setStateFromFlux
         )
@@ -35,11 +38,11 @@ function fluxxorWrapper(WrappedComponent, flux, fluxxorStores, fluxxorProps) {
     }
 
     getStateFromFlux() {
-      return fluxxorProps(flux);
+      return fluxxorProps(this.fluxIns);
     }
 
     getFlux() {
-      return flux;
+      return this.fluxIns;
     }
 
     render() {
