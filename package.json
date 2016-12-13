@@ -1,6 +1,6 @@
 {
   "name": "fluxxor-wrapper",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A hoc try to implement FluxMixin and StoreWatchMixin of fluxxor",
   "main": "./dist/index.js",
   "scripts": {
